@@ -1,0 +1,18 @@
+Package: TrialFociMapper
+Title: Mapping and Analysis of Therapeutic Foci in Clinical Trials
+Version: 1.0.0
+Author: Samruddhi Suresh Yerunkar <samruddhi2815@gmail.com>
+Description: 
+    TrialFociMapper is an R package that facilitates the mapping and analysis of therapeutic foci in clinical trials. It provides functions to retrieve trial foci based on NCT IDs from a PostgreSQL database and assign therapeutic focuses using a disease-centric approach. The package enables researchers and analysts to efficiently explore and understand the therapeutic areas of clinical trials, aiding in the analysis of clinical trial data.
+License: GPL-3
+Encoding: UTF-8
+Depends: R (>= 3.5.0)
+Imports:
+    RPostgreSQL,
+    assertthat,
+    magrittr,
+    stringr,
+    tidyr,
+    dplyr,
+    here
+RoxygenNote: 7.2.3
