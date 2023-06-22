@@ -1,6 +1,8 @@
-#' @name process MeSH Tree 2023
+#' @name process MeSH tree 2023
 #'
-#' Read and Process Mesh Tree Data
+#' @title process MeSH tree 2023
+#'
+#'@description Read and Process Mesh Tree Data
 #'
 #'The code reads an ASCII format UTF-8 Mesh Tree file and processes it to extract relevant information.
 #'It filters the data for tree numbers related to diseases, assigns major tree numbers based on grouping,
@@ -20,7 +22,7 @@
 
 library(magrittr)
 # read in binary file as text file (source: https://www.nlm.nih.gov/databases/download/mesh.html)
-mtrees <- readLines(here::here("GitHub/TrialFociMapper/R/mtrees2023.bin"))
+mtrees <- readLines(here::here("R/mtrees2023.bin"))
 
 
 # split text into two columns based on semicolon separator
