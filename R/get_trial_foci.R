@@ -42,7 +42,7 @@ generate_foci <- function(nctids, username, password) {
   port <- 5432
 
   # Load default mesh_tree
-  source(here::here("R/get_mesh_tree_disease.R"))
+ source("https://raw.githubusercontent.com/sama9767/TrialFociMapper/main/R/get_mesh_tree_disease.R")
 
   # Connect to the AACT database
   con <- dbConnect(RPostgreSQL::PostgreSQL(),
