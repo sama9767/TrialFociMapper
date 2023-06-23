@@ -16,17 +16,22 @@
 #'@note An account in AACT database is required for credentials
 #'(visit this link for registration : https://aact.ctti-clinicaltrials.org/users/sign_up)
 #'
+#'@import RPostgreSQL
+#'@import assertthat
+#'@import magrittr
 #'
 #'@usage generate_foci(nctids, username, password)
 #'
+#'@export
 #'
+
 library(RPostgreSQL)
 library(assertthat)
 library(magrittr)
 
 generate_foci <- function(nctids, username, password) {
   # Check that TRN is well-formed
-  assert_that(
+  assertthat::assert_that(
     is.character(nctids),
     all(grepl("^NCT\\d{8}$", nctids))
   )
@@ -40,15 +45,19 @@ generate_foci <- function(nctids, username, password) {
   source(here::here("R/get_mesh_tree_disease.R"))
 
   # Connect to the AACT database
-  drv <- dbDriver("PostgreSQL")
-  con <- dbConnect(drv, dbname = dbname, host = host, port = port, user = username, password = password)
+  con <- dbConnect(RPostgreSQL::PostgreSQL(),
+                   dbname = dbname,
+                   host = host,
+                   port = port,
+                   user = username,
+                   password = password)
 
   all_foci <- data.frame(nct_id = character(), trial_foci_table = character(), stringsAsFactors = FALSE)
 
   for (nctid in nctids) {
     # Download browse_conditions table for the current NCT ID
     query <- paste0("SELECT * FROM browse_conditions WHERE nct_id = '", nctid, "'")
-    browse_conditions <- dbGetQuery(con, query)
+    browse_conditions <- RPostgreSQL::dbGetQuery(con, query)
 
     # Find matching major mesh headings for the mesh terms
     mesh_terms <- browse_conditions$downcase_mesh_term
@@ -75,8 +84,8 @@ generate_foci <- function(nctids, username, password) {
     dplyr::distinct(nct_id, .keep_all = TRUE)
 
   # Disconnect from the database
-  dbDisconnect(con)
-  dbUnloadDriver(drv)
+ RPostgreSQL::dbDisconnect(con)
+
 
   return(trial_foci_table)
 }
