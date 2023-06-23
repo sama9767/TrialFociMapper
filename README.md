@@ -18,8 +18,8 @@ library(TrialFociMapper)
 ## TrialFoci functions
 This package provides two functions:
 
-1.Retrieve trial foci and assign major MeSH headings
-(an account in AACT database is required for generating username and password ( https://aact.ctti-clinicaltrials.org/users/sign_up)
+1. Retrieve trial foci and assign major MeSH headings
+(an account in the AACT database is required for generating a username and password ( https://aact.ctti-clinicaltrials.org/users/sign_up))
 ```R
 generate_foci(nctids, username, password)
 data <- generate_foci("NCT01271322",username, password)
@@ -37,12 +37,12 @@ assign_therapeutic_focus(data, "nct_id", c("major_mesh_heading_1", "major_mesh_h
 |---------|-----------|---------|-----|------------|----|
 |   NCT01271322  |     Neoplasms         | Digestive System Diseases | NA |NA| Neoplasm|
 
-## Disease centric approach
+## Disease-centric approach
  The disease-centric approach prioritizes diseases as the main factor in determining the therapeutic focus. 
  Higher weights are assigned to diseases, indicating their greater importance. Associated organ systems, pathology, 
  or symptoms are also considered, although with lesser weight. To assign major foci, a specific category of 
- MeSH descriptors called "C" is used, which represents diseases. MeSH descriptors are organized hierarchically, 
- allowing navigation from general to specific terms. Following is table of MeSH heading with corresponding weights:
+ MeSH descriptors called "C" is used, which represent diseases. MeSH descriptors are organized hierarchically, 
+ allowing navigation from general to specific terms. Following is the table of MeSH heading with corresponding weights:
  | Major MeSH Heading | Weight |
  |-----|------|
  |Infections| 4|
