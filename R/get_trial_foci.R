@@ -19,6 +19,7 @@
 #'@import RPostgreSQL
 #'@import assertthat
 #'@import magrittr
+#'@import rio
 #'
 #'@usage generate_foci(nctids, username, password)
 #'
@@ -42,7 +43,7 @@ generate_foci <- function(nctids, username, password) {
   port <- 5432
 
   # Load default mesh_tree
- source("https://raw.githubusercontent.com/sama9767/TrialFociMapper/main/R/get_mesh_tree_disease.R")
+mesh_tree <- rio::import("https://raw.githubusercontent.com/sama9767/TrialFociMapper/main/data/mesh_tree.csv")
 
   # Connect to the AACT database
   con <- dbConnect(RPostgreSQL::PostgreSQL(),
