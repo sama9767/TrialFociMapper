@@ -6,8 +6,10 @@ leveraging the information provided by data submitters to ClinicalTrials.gov. It
 a single therapeutic focus for each trial, utilizing the major mesh headings. The major foci are assigned based on MeSH descriptor 
 data from 2023, obtained from the MeSH Trees project by the National Library of Medicine (https://nlmpubs.nlm.nih.gov/projects/mesh/MESH_FILES/meshtrees/).
 
+🔺 In cases where no information is submitted from the data submitters for a particular clinical trial, the function will assign "NA" as the therapeutic focus.
+
 ## How to install
-To install package, you will nee to install devtools first, and then install via git:
+To install the package, you will need to install devtools first, and then install via git:
 ```R
 install.packages("devtools")
 library(devtools)
@@ -19,7 +21,8 @@ library(TrialFociMapper)
 This package provides two functions:
 
 1. Retrieve trial foci and assign major MeSH headings
-(an account in the AACT database is required for generating a username and password ( https://aact.ctti-clinicaltrials.org/users/sign_up))
+
+Note: An account in the AACT database is required for generating a username and password (see link: https://aact.ctti-clinicaltrials.org/users/sign_up)
 ```R
 generate_foci(nctids, username, password)
 data <- generate_foci("NCT01271322",username, password)
@@ -70,6 +73,8 @@ assign_therapeutic_focus(data, "nct_id", c("major_mesh_heading_1", "major_mesh_h
  |Wounds and Injuries |1|
 
 source: https://meshb.nlm.nih.gov/treeView
+
+
  
  
 
