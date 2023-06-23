@@ -14,7 +14,8 @@
 #'
 #'@return mesh_tree containing mesh headings and tree
 #'
-#'
+#'@import magrittr
+#'@import dplyr
 #'
 #'@note MeSH tree files in a ASCII format UTF-8 and generated every year. Use updated MesH tree
 #'file (link:https://www.nlm.nih.gov/databases/download/mesh.html)
@@ -22,7 +23,7 @@
 
 library(magrittr)
 # read in binary file as text file (source: https://www.nlm.nih.gov/databases/download/mesh.html)
-mtrees <- readLines(here::here("R/mtrees2023.bin"))
+mtrees <- readLines(here::here("R/mesh_trees/mtrees2023.bin"))
 
 
 # split text into two columns based on semicolon separator
