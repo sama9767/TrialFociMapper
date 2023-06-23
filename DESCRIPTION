@@ -13,7 +13,8 @@ Imports:
     stringr,
     tidyr,
     dplyr,
-    here
+    here,
+    rio
 RoxygenNote: 7.2.3
 URL: https://github.com/sama9767/TrialFociMapper
 BugReports: https://github.com/sama9767/TrialFociMapper/issues
