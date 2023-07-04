@@ -42,7 +42,8 @@ source: https://meshb.nlm.nih.gov/treeView
 
 ### Note
 🔺 In cases where no information is submitted from the data submitters for a particular clinical trial, the function will assign "NA" as the therapeutic focus.
-🔺 If a trial is assigned with all Major MeSH headings with the same weight, the first mentioned 'Major MeSH Heading' is assigned as a therapeutic focus
+
+🔺 If a trial is assigned with all Major MeSH headings with the same weight, the first mentioned 'Major MeSH Heading' is assigned as a therapeutic focus.
 
 ## How to install
 To install the package, you will need to install devtools first, and then install via git:
