@@ -69,7 +69,7 @@ data <- generate_foci("NCT01271322",username, password)
 |---------|-----------|---------|-----|------------|
 |   NCT01271322  |     Neoplasms         | Digestive System Diseases | NA |NA|
 
-2. `assign_therapeutic_focus` - (Assigns a single therapeutic focus to each clinical trial based on disease centric approach
+2. `assign_therapeutic_focus` - Assigns a single therapeutic focus to each clinical trial based on disease centric approach
 ```R
 assign_therapeutic_focus(data, "nct_id", c("major_mesh_heading_1", "major_mesh_heading_2",  "major_mesh_heading_3", "major_mesh_heading_4")
 `````
@@ -77,4 +77,8 @@ assign_therapeutic_focus(data, "nct_id", c("major_mesh_heading_1", "major_mesh_h
 |---------|-----------|---------|-----|------------|----|
 |   NCT01271322  |     Neoplasms         | Digestive System Diseases | NA |NA| Neoplasm|
 
- 
+
+ # Additional Note
+If you encounter any issues while downloading or using this package, please open an issue in the issue tracker above. Additionally, if you notice any problems with the extraction of information or have any suggestions for improvements, please feel free to report them in the issue tracker as well. 
+
+SY out.
