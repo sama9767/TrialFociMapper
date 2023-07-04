@@ -78,7 +78,8 @@ assign_therapeutic_focus(data, "nct_id", c("major_mesh_heading_1", "major_mesh_h
 |   NCT01271322  |     Neoplasms         | Digestive System Diseases | NA |NA| Neoplasm|
 
 
- # Additional Note
+ ## Additional Note
 If you encounter any issues while downloading or using this package, please open an issue in the issue tracker above. Additionally, if you notice any problems with the extraction of information or have any suggestions for improvements, please feel free to report them in the issue tracker as well. 
 
-SY out.
+
+SY out🙏.
