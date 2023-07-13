@@ -20,6 +20,7 @@
 #'@import assertthat
 #'@import magrittr
 #'@import rio
+#'@import stringdist
 #'
 #'@usage generate_foci(nctids, username, password)
 #'
