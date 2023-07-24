@@ -62,7 +62,7 @@ This package provides two functions:
 Note: An account in the AACT database is required for generating a username and password (see link: https://aact.ctti-clinicaltrials.org/users/sign_up)
 ```R
 generate_foci(nctids, username, password)
-data <- generate_foci("NCT01271322",username, password)
+e.g data <- generate_foci("NCT01271322",username, password)
 ````
 
 |  nct_id | major_mesh_heading_1   |   major_mesh_heading_2 | major_mesh_heading_3| major_mesh_heading_4|
@@ -71,7 +71,7 @@ data <- generate_foci("NCT01271322",username, password)
 
 2. `assign_therapeutic_focus` - Assigns a single therapeutic focus to each clinical trial based on disease centric approach
 ```R
-assign_therapeutic_focus(data, "nct_id", c("major_mesh_heading_1", "major_mesh_heading_2",  "major_mesh_heading_3", "major_mesh_heading_4")
+assign_therapeutic_focus(data, "nct_id", c("major_mesh_heading_1", "major_mesh_heading_2",  "major_mesh_heading_3", "major_mesh_heading_4"))
 `````
 |  nct_id | major_mesh_heading_1   |   major_mesh_heading_2 | major_mesh_heading_3| major_mesh_heading_4| therapeutic_focus|
 |---------|-----------|---------|-----|------------|----|
