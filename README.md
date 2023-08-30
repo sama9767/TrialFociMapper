@@ -11,7 +11,7 @@ The TrialFociMapper package retrieves the browse_conditions table for a given tr
 ### What is a disease-centric approach?
 The disease-centric approach prioritizes "diseases" as the main factor in determining the therapeutic focus. Higher weights are assigned to diseases and associated organ systems, pathology, 
 or symptoms are given lesser weight. These Major MeSH headings are taken from category "C" representing 'diseases' from [MeSH descriptors data 2023](https://www.nlm.nih.gov/databases/download/mesh.html). 
-Following is the table of MeSH headings with corresponding weights as assigned by the package:
+Following is the table of MeSH headings with corresponding weights as assigned in the package:
 
  | Major MeSH Heading | Weight |
  |-----|------|
