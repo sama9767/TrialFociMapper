@@ -73,7 +73,8 @@ mesh_tree <- rio::import("https://raw.githubusercontent.com/sama9767/TrialFociMa
   }
 
   # Split the trial_foci_table column into major and other foci
-  trial_foci_table_raw <- tidyr::separate(all_foci, trial_foci_table,
+  trial_foci_table_raw <-
+    tidyr::separate(all_foci, trial_foci_table,
                                           into = c("major_mesh_heading_1", "major_mesh_heading_2",
                                                    "major_mesh_heading_3", "major_mesh_heading_4",
                                                    "major_mesh_heading_5", "major_mesh_heading_6",
@@ -82,7 +83,8 @@ mesh_tree <- rio::import("https://raw.githubusercontent.com/sama9767/TrialFociMa
                                           sep = ";", fill = "right")
 
   # Keep distinct entries based on nct_id
-  trial_foci_table <- trial_foci_table_raw %>%
+  trial_foci_table <-
+    trial_foci_table_raw |>
     dplyr::distinct(nct_id, .keep_all = TRUE)
 
   # Disconnect from the database
