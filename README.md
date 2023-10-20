@@ -21,6 +21,7 @@ or symptoms are given lesser weight. Following is the table of therapeutic focus
  |Neoplasms| 3|
  |Cardiovascular Diseases| 2.5|
  |Nervous System Diseases| 2.5|
+ |Mental Disorders|2.5|
  |Musculoskeletal Diseases|2|
  |Digestive System Diseases|2|
  |Respiratory Tract Diseases|2|
@@ -37,9 +38,14 @@ or symptoms are given lesser weight. Following is the table of therapeutic focus
  |Animal Diseases|2|
  |Pathological Conditions, Signs and Symptoms|1.5|
  |Stomatognathic Diseases|1.5|
+  |Behavioral Disciplines and Activities|1.5|
  |Occupational Diseases|1|
  |Chemically-Induced Disorders|1|
  |Wounds and Injuries |1|
+ |Behaviour and Behaviour Mechanism|1|
+ |Psychological Phenomena|1|
+ 
+
 
 
 
