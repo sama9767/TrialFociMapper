@@ -52,10 +52,10 @@ assign_therapeutic_focus <- function(data, nctid_col, mesh_heading_cols) {
     "Occupational Diseases" = 1,
     "Chemically-Induced Disorders" = 1,
     "Wounds and Injuries" = 1,
-    "Behaviour and Behaviour Mechanism" = 2,
-    "Psychological Phenomena" = 2,
-    "Mental Disorders" = 3,
-    "Behavioral Disciplines and Activities" = 2
+    "Behaviour and Behaviour Mechanism" = 1,
+    "Psychological Phenomena" = 1,
+    "Mental Disorders" = 2.5,
+    "Behavioral Disciplines and Activities" = 1.5
   )
 
   # Iterate over each row in the data frame
