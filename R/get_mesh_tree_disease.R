@@ -27,17 +27,19 @@ mtrees <- readLines(here::here("R/mesh_trees/mtrees2023.bin"))
 
 
 # split text into two columns based on semicolon separator
-mesh_tree <- data.frame(do.call("rbind", strsplit(mtrees, ";")), stringsAsFactors = FALSE)
+mesh_tree_raw <- data.frame(do.call("rbind", strsplit(mtrees, ";")), stringsAsFactors = FALSE)
 
 
 # rename columns
-colnames(mesh_tree) <- c("mesh_heading", "tree_number")
+colnames(mesh_tree_raw) <- c("mesh_heading", "tree_number")
 
 
-# slicing mesh tree for interested variables related to 'Diseases[C]' (C01 to C26.986.950.500)
-mesh_tree <- mesh_tree[which(
-  mesh_tree$tree_number >= "C01" &
-    mesh_tree$tree_number <= "C26.986.950.500"),]
+# slicing mesh tree for interested variables related to 'Diseases[C]' (C01 to C26.986.950.500) and
+# Psychiatry and Psychology [F]
+mesh_tree <- subset(mesh_tree_raw,
+                        (tree_number >= "C01" & tree_number <= "C26.986.950.500") |
+                          (tree_number >= "F01" & tree_number <= "F04.824")
+)
 
 
 # create column major_tree_number and major_mesh_heading and fill with "NA"
