@@ -21,6 +21,7 @@
 #'@import magrittr
 #'@import rio
 #'@import stringdist
+#'@import dplyr
 #'
 #'@usage generate_foci(nctids, username, password)
 #'
@@ -30,6 +31,7 @@
 library(RPostgreSQL)
 library(assertthat)
 library(magrittr)
+library(dplyr)
 
 generate_foci <- function(nctids, username, password) {
   # Check that TRN is well-formed
@@ -72,24 +74,23 @@ mesh_tree <- rio::import("https://raw.githubusercontent.com/sama9767/TrialFociMa
     all_foci <- rbind(all_foci, data.frame(nct_id = nctid, trial_foci_table = trial_foci, stringsAsFactors = FALSE))
   }
 
-  # Split the trial_foci_table column into major and other foci
-  trial_foci_table_raw <-
-    tidyr::separate(all_foci, trial_foci_table,
-                                          into = c("major_mesh_heading_1", "major_mesh_heading_2",
-                                                   "major_mesh_heading_3", "major_mesh_heading_4",
-                                                   "major_mesh_heading_5", "major_mesh_heading_6",
-                                                   "major_mesh_heading_7", "major_mesh_heading_8",
-                                                   "major_mesh_heading_9", "major_mesh_heading_10"),
-                                          sep = ";", fill = "right")
+                                        # Split the trial_foci_table column into major and other foci
+
+    all_foci$trial_foci_table_list <- all_foci$trial_foci_table %>%
+        strsplit(";") %>%
+        as.list()
 
   # Keep distinct entries based on nct_id
-  trial_foci_table <-
-    trial_foci_table_raw |>
-    dplyr::distinct(nct_id, .keep_all = TRUE)
+  all_foci <-
+      all_foci |>
+      dplyr::distinct(nct_id, .keep_all = TRUE)
+
+    all_foci <- all_foci %>%
+        select(! trial_foci_table)
 
   # Disconnect from the database
  RPostgreSQL::dbDisconnect(con)
 
 
-  return(trial_foci_table)
+  return(all_foci)
 }
