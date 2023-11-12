@@ -18,7 +18,7 @@ data_1 <- read_xlsx('tests/01-foci_weight_assignment.xlsx', sheet = 'test-trials
   select('NCT ID')
 nctids_1 <- data_1$'NCT ID'
 
-## read test data (first sample)
+## read test data (second sample)
 ## (for this sample, I took clinical trials from a certain month from
 ## ClinicalTrials.gov and sampled one thousand trials)
 data_2 <- read_csv('tests/matching_algorithm_sample.csv') |> sample_n(1000)
@@ -53,7 +53,8 @@ username <- aact_username
 password <- aact_password
 
 ## load default mesh_tree
-mesh_tree <- rio::import("https://raw.githubusercontent.com/sama9767/TrialFociMapper/main/data/mesh_tree.csv")
+mesh_tree <- rio::import("https://raw.githubusercontent.com/sama9767/TrialFociMapper/main/data/mesh_tree.csv") |>
+  mutate(mesh_heading_lower = tolower(mesh_heading))
 
 ## connect to the AACT database
 con <- dbConnect(RPostgreSQL::PostgreSQL(),
@@ -95,7 +96,7 @@ for (nctid in nctids) {
 
     ## find matching major mesh headings for the mesh terms
     mesh_terms <- browse_conditions$downcase_mesh_term
-    matching_mesh_headings <- mesh_tree$major_mesh_heading[stringdist::amatch(mesh_terms, mesh_tree$mesh_heading, maxDist = i)] %>% as.data.frame()
+    matching_mesh_headings <- mesh_tree$major_mesh_heading[stringdist::amatch(mesh_terms, mesh_tree$mesh_heading_lower, maxDist = i)] %>% as.data.frame()
 
     ## append results to the final data frame
     browse_conditions <- bind_cols(browse_conditions, matching_mesh_headings, .name_repair = 'universal')
@@ -126,4 +127,4 @@ for (nctid in nctids) {
 RPostgreSQL::dbDisconnect(con)
 
 # save data
-data %>% write_csv('tests/matching_algorithm_test.csv')
+data %>% write_csv('tests/matching_algorithm_test_revised.csv')
