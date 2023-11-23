@@ -46,7 +46,8 @@ generate_foci <- function(nctids, username, password) {
   port <- 5432
 
   # Load default mesh_tree
-mesh_tree <- rio::import("https://raw.githubusercontent.com/sama9767/TrialFociMapper/main/data/mesh_tree.csv")
+mesh_tree <- rio::import("https://raw.githubusercontent.com/sama9767/TrialFociMapper/main/data/mesh_tree.csv") |>
+  dplyr::mutate(mesh_heading_lower = tolower(mesh_heading))
 
   # Connect to the AACT database
   con <- dbConnect(RPostgreSQL::PostgreSQL(),
@@ -65,7 +66,7 @@ mesh_tree <- rio::import("https://raw.githubusercontent.com/sama9767/TrialFociMa
 
     # Find matching major mesh headings for the mesh terms
     mesh_terms <- browse_conditions$downcase_mesh_term
-    matching_mesh_headings <- mesh_tree$major_mesh_heading[stringdist::amatch(mesh_terms, mesh_tree$mesh_heading, maxDist = 7)]
+    matching_mesh_headings <- mesh_tree$major_mesh_heading[stringdist::amatch(mesh_terms, mesh_tree$mesh_heading_lower, maxDist = 7)]
 
     # Combine matching major mesh headings into a single string
     trial_foci <- ifelse(length(matching_mesh_headings) == 0, "", stringr::str_c(unique(matching_mesh_headings), collapse = ";"))
