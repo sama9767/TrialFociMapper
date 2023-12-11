@@ -4,12 +4,14 @@
 [ClinicalTrials.gov](https://classic.clinicaltrials.gov/) data is structured within the [AACT database schema](https://aact.ctti-clinicaltrials.org/). The AACT database incorporates information from ClinicalTrials.gov and features a "Browse Conditions" table, detailing the conditions studied in trials. When submitting study data to ClinicalTrials.gov, contributors are advised to employ [Medical Subject Heading (MeSH)](https://www.nlm.nih.gov/databases/download/mesh.html) terms, sourced from a [MeSH tree](https://meshb.nlm.nih.gov/treeView) with 16 overarching categories, each with subcategories. These subcategories (referred to as therapeutic focus in this package) form hierarchical trees, organizing descriptors from general to specific across up to thirteen levels.
 Within the AACT database's "browse_conditions" table, MeSH terms are populated through an algorithm executed by the National Library of Medicine (NLM). This algorithm, rerun nightly, processes all studies in the ClinicalTrials.gov database. 
 
-This package focuses specifically on the "Diseases" (C) and "Psychiatry and Psychology" [F] categories in the MeSH tree and the subcategories were used to represent therapeutic focuses. The descriptors, arranged from general to specific, were treated as nodes stemming from each therapeutic focus. The package accesses the "browse_conditions" table for a given trial and determines therapeutic focus based on the NLM descriptor data available at the NLM descriptor data reference.
+This package focuses on the "Diseases" (C) and "Psychiatry and Psychology" [F] categories in the MeSH tree and the subcategories were used to represent therapeutic focuses. The descriptors, arranged from general to specific, were treated as nodes stemming from each therapeutic focus. The package accesses the "browse_conditions" table for a given trial and determines therapeutic focus based on the NLM descriptor data available at the NLM descriptor data reference.
 
-Two functions are provided:
-1. `generate_foci`: This function retrieves the "browse_conditions" table and extracts clean high-level therapeutic focuses. It also returns parent nodes if only specific nodes are provided, using the NLM data as a guide.
+The following functions are provided:
+1. `generate_foci_ctgov`: This function retrieves the "browse_conditions" table and extracts clean high-level therapeutic focuses. It also returns parent nodes if only specific nodes are provided, using the NLM data as a guide.
 
 2. `assign_therapeutic_focus`: This additional function assigns trials with multiple therapeutic focuses to a single therapeutic focus. This is achieved using a disease-centric approach, as outlined in the below.
+
+3. `generate_foci_euctr`: This function downloads the medical condition field from EUCTR for a given record EUCTR identifier. 
 
 ### What is a disease-centric approach?
 The disease-centric approach prioritizes "diseases" as the main factor in determining the therapeutic focus. Higher weights are assigned to diseases and associated organ systems, pathology, 
