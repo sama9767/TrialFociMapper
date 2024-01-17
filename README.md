@@ -1,7 +1,7 @@
 # TrialFociMapper
 
 ## Description
-The TherapeuticFociAssigner R package facilitates the assignment of therapeutic foci to clinical trials from ClinicalTrials.gov and EU Clinical Trials Register (EUCTR).
+This package assigns therapeutic foci to clinical trials from ClinicalTrials.gov and EU Clinical Trials Register (EUCTR).
 
 ### ClinicalTrials.gov
 [ClinicalTrials.gov](https://classic.clinicaltrials.gov/) data is structured within the [AACT database schema](https://aact.ctti-clinicaltrials.org/). The AACT database incorporates information from ClinicalTrials.gov and features a "Browse Conditions" table, detailing the conditions studied in trials. When submitting study data to ClinicalTrials.gov, contributors are advised to employ [Medical Subject Heading (MeSH)](https://www.nlm.nih.gov/databases/download/mesh.html) terms, sourced from a [MeSH tree](https://meshb.nlm.nih.gov/treeView) with 16 overarching categories, each with subcategories. These subcategories (referred to as therapeutic focus in this package) form hierarchical trees, organizing descriptors from general to specific across up to thirteen levels.
