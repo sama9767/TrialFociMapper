@@ -49,10 +49,10 @@ or symptoms are given lesser weight. Following is the table of therapeutic focus
  |Psychological Phenomena|1|
  
 ### EUCTR registry
-It Downloads the medical condition field from EUCTR for a given record EUCTR identifier and utilizes web scraping to acquire relevant data.
+It extracts the medical condition field from EUCTR for a given record EUCTR identifier via web-scraping.
 
 The following functions are provided:
-1. `generate_foci_euctr`: This function extracts the medical condition field from EUCTR for a given record EUCTR identifier and assign it as therapeutic foci.
+1. `generate_foci_euctr`: This function extracts the medical condition field from EUCTR for a given record EUCTR identifier and assigns it as therapeutic foci.
 
 
 ### Note
