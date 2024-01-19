@@ -92,9 +92,9 @@ assign_therapeutic_focus(data, "nct_id", c("major_mesh_heading_1", "major_mesh_h
 
 3. `generate_foci_euctr` - Downloads the medical condition field from EUCTR for a given record identifier
 ```R
-generate_foci_euctr("2010-023457-11)
+generate_foci_euctr("2010-023457-11")
 `````
-"advanced/recurrent ovarian and endometrial cancer"
+advanced/recurrent ovarian and endometrial cancer
 
 ## Additional Note
 If you encounter any issues while downloading or using this package, please open an issue in the issue tracker above. Additionally, if you notice any problems with the extraction of information or have any suggestions for improvements, please feel free to report them in the issue tracker as well. 
