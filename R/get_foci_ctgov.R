@@ -1,6 +1,6 @@
-#'@title generate_foci_ctgov
+#'@title get_foci_ctgov
 #'
-#'@name generate_foci_ctgov
+#'@name get_foci_ctgov
 #
 #'@description
 #'This function retrieves trial foci based on a list of NCT IDs from a PostgreSQL database.
@@ -23,7 +23,7 @@
 #'@import stringdist
 #'@import dplyr
 #'
-#'@usage generate_foci_ctgov(nctids, username, password)
+#'@usage get_foci_ctgov(nctids, username, password)
 #'
 #'@export
 #'
@@ -33,7 +33,7 @@ library(assertthat)
 library(magrittr)
 library(dplyr)
 
-generate_foci_ctgov <- function(nctids, username, password) {
+get_foci_ctgov <- function(nctids, username, password) {
   # Check that TRN is well-formed
   assertthat::assert_that(
     is.character(nctids),
