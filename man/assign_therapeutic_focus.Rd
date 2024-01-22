@@ -27,6 +27,3 @@ determining the therapeutic focus, with secondary consideration given to the ass
 systems, pathology, or symptoms.The function takes a data frame with NCT IDs and major mesh
 headings as input and generates a single therapeutic focus for each trial.
 }
-\note{
-get_trial_foci function to generate the data for assigning final therapeutic focus
-}
