@@ -10,7 +10,7 @@ Within the AACT database's "browse_conditions" table, MeSH terms are populated t
 For ClinicalTrials.gov trials, this package focuses on the "Diseases" (C) and "Psychiatry and Psychology" [F] categories in the MeSH tree and the subcategories were used to represent therapeutic focuses. These subcategories, arranged from general to specific, were treated as nodes stemming from each therapeutic focus.  The function accesses the "browse_conditions" table for a given trial and determines therapeutic focus based on the NLM descriptor data available at the NLM descriptor data reference.
 
 The following functions are provided:
-1. `generate_foci_ctgov`: This function retrieves the "browse_conditions" table and extracts clean high-level therapeutic focuses. It also returns parent nodes if only specific nodes are provided, using the NLM data as a guide.
+1. `get_foci_ctgov`: This function retrieves the "browse_conditions" table and extracts clean high-level therapeutic focuses. It also returns parent nodes if only specific nodes are provided, using the NLM data as a guide.
 
 2. `assign_therapeutic_focus`: This additional function assigns trials with multiple therapeutic focuses to a single therapeutic focus. This is achieved using a disease-centric approach, as outlined in the below.
 
@@ -52,7 +52,7 @@ or symptoms are given lesser weight. Following is the table of therapeutic focus
 It extracts the medical condition field from EUCTR for a given record EUCTR identifier via web-scraping.
 
 The following functions are provided:
-1. `generate_foci_euctr`: This function extracts the medical condition field from EUCTR for a given record EUCTR identifier and assigns it as therapeutic foci.
+1. `get_foci_euctr`: This function extracts the medical condition field from EUCTR for a given record EUCTR identifier and assigns it as therapeutic foci.
 
 
 ### Note
@@ -74,8 +74,8 @@ library(TrialFociMapper)
 
 Note: An account in the AACT database is required for generating a username and password (see link: https://aact.ctti-clinicaltrials.org/users/sign_up)
 ```R
-generate_foci_ctgov_ctgov(nctids, username, password)
-e.g data <- generate_foci("NCT01271322",username, password)
+get_foci_ctgov_ctgov(nctids, username, password)
+e.g data <- get_foci("NCT01271322",username, password)
 ````
 
 |  nct_id | trial_foci_table_list  |  
@@ -90,9 +90,9 @@ assign_therapeutic_focus(data, "nct_id", c("major_mesh_heading_1", "major_mesh_h
 |---------|-----------|-----|
 |   NCT01271322  |   c("Neoplasms, Digestive System Diseases")  | Neoplasms|
 
-3. `generate_foci_euctr` - Downloads the medical condition field from EUCTR for a given record identifier
+3. `get_foci_euctr` - Downloads the medical condition field from EUCTR for a given record identifier
 ```R
-generate_foci_euctr("2010-023457-11")
+get_foci_euctr("2010-023457-11")
 `````
 ##advanced/recurrent ovarian and endometrial cancer
 
