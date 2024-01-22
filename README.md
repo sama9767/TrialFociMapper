@@ -1,7 +1,7 @@
 # TrialFociMapper
 
 ## Description
-This package assigns therapeutic focus to clinical trials from ClinicalTrials.gov and EU Clinical Trials Register (EUCTR).
+This package retrieves and assigns therapeutic focus to clinical trials from ClinicalTrials.gov and EU Clinical Trials Register (EUCTR).
 
 ### ClinicalTrials.gov
 [ClinicalTrials.gov](https://classic.clinicaltrials.gov/) data is structured within the [AACT database schema](https://aact.ctti-clinicaltrials.org/). The AACT database incorporates information from ClinicalTrials.gov and features a "Browse Conditions" table, detailing the conditions studied in trials. When submitting study data to ClinicalTrials.gov, contributors are advised to employ [Medical Subject Heading (MeSH)](https://www.nlm.nih.gov/databases/download/mesh.html) terms, sourced from a [MeSH tree](https://meshb.nlm.nih.gov/treeView) with 16 overarching categories, each with subcategories. These subcategories (referred to as therapeutic focus in this package) form hierarchical trees, organizing descriptors from general to specific across up to thirteen levels.
@@ -78,23 +78,23 @@ generate_foci_ctgov_ctgov(nctids, username, password)
 e.g data <- generate_foci("NCT01271322",username, password)
 ````
 
-|  nct_id | major_mesh_heading_1   |   major_mesh_heading_2 | major_mesh_heading_3| major_mesh_heading_4|
-|---------|-----------|---------|-----|------------|
-|   NCT01271322  |     Neoplasms         | Digestive System Diseases | NA |NA|
+|  nct_id | trial_foci_table_list  |  
+|---------|-----------|
+|   NCT01271322  |     Neoplasms, Digestive System Diseases         |
 
 2. `assign_therapeutic_focus` - Assigns a single therapeutic focus to each clinical trial based on disease centric approach
 ```R
 assign_therapeutic_focus(data, "nct_id", c("major_mesh_heading_1", "major_mesh_heading_2",  "major_mesh_heading_3", "major_mesh_heading_4"))
 `````
-|  nct_id | major_mesh_heading_1   |   major_mesh_heading_2 | major_mesh_heading_3| major_mesh_heading_4| therapeutic_focus|
-|---------|-----------|---------|-----|------------|----|
-|   NCT01271322  |     Neoplasms         | Digestive System Diseases | NA |NA| Neoplasm|
+|  nct_id | trial_foci_table_list | therapeutic_focus|
+|---------|-----------|-----|
+|   NCT01271322  |   c("Neoplasms, Digestive System Diseases")  | Neoplasms|
 
 3. `generate_foci_euctr` - Downloads the medical condition field from EUCTR for a given record identifier
 ```R
 generate_foci_euctr("2010-023457-11")
 `````
-advanced/recurrent ovarian and endometrial cancer
+##advanced/recurrent ovarian and endometrial cancer
 
 ## Additional Note
 If you encounter any issues while downloading or using this package, please open an issue in the issue tracker above. Additionally, if you notice any problems with the extraction of information or have any suggestions for improvements, please feel free to report them in the issue tracker as well. 
