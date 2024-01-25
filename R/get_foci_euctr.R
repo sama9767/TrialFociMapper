@@ -1,4 +1,4 @@
-#' @title euctr_scrape
+#' @title get_foci_euctr
 #'
 #' @description Downloads the medical condition field from EUCTR for a
 #'     given record identifier
@@ -13,10 +13,10 @@
 #' @export
 #'
 #' @examples
-#' euctr_scrape("2010-023457-11")
+#' get_foci_euctr("2010-023457-11")
 #' ## "advanced/recurrent ovarian and endometrial cancer"
 
-euctr_scrape <- function (trn) {
+get_foci_euctr <- function (trn) {
 
     ## Check that trn is well-formed
     assertthat::assert_that(
@@ -29,7 +29,7 @@ euctr_scrape <- function (trn) {
                     ! httr::http_error("https://www.clinicaltrialsregister.eu"),
                     msg = "Unable to connect to EUCTR"
                 )
-    
+
     ## Construct the URL
     url <- paste0(
         "https://www.clinicaltrialsregister.eu/ctr-search/search?query=",
@@ -48,7 +48,7 @@ euctr_scrape <- function (trn) {
         rvest::html_text2() %>%
         stringr::str_extract("^Medical condition: (.*)$", group = 1) %>%
         stringr::str_trim()
-    
+
     ## Check that exactly one record was returned
     assertthat::assert_that(
                     length(condition) == 1,
@@ -57,5 +57,5 @@ euctr_scrape <- function (trn) {
 
     ## Return result
     return(condition)
-    
+
 }

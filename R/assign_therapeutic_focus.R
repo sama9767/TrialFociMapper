@@ -16,8 +16,6 @@
 #' @return A modified data frame with an additional column "therapeutic_focus" containing the assigned
 #' therapeutic focus for each clinical trial.
 #'
-#' @note
-#' get_trial_foci function to generate the data for assigning final therapeutic focus
 #'
 #'
 #' @usage
