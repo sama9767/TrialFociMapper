@@ -70,11 +70,11 @@ library(TrialFociMapper)
 ````
 
 ## TrialFoci functions
-1. `generate_foci_ctgov_ctgov` -  Retrieve trial foci and assign major MeSH headings
+1. `get_foci_ctgov` -  Retrieve trial foci and assign major MeSH headings
 
 Note: An account in the AACT database is required for generating a username and password (see link: https://aact.ctti-clinicaltrials.org/users/sign_up)
 ```R
-get_foci_ctgov_ctgov(nctids, username, password)
+get_foci_ctgov(nctids, username, password)
 e.g data <- get_foci("NCT01271322",username, password)
 ````
 
