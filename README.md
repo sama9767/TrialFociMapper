@@ -1,7 +1,7 @@
 # TrialFociMapper
 
 ## Description
-This package retrieves and assigns therapeutic focI to clinical trials from ClinicalTrials.gov and EU Clinical Trials Register (EUCTR).
+This package retrieves and assigns therapeutic foci to clinical trials from ClinicalTrials.gov and the EU Clinical Trials Register (EUCTR).
 
 ### ClinicalTrials.gov
 
