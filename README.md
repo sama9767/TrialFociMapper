@@ -14,6 +14,7 @@ The following functions are provided:
 1. `get_foci_ctgov`: This function utilizes the "browse_conditions" table to generate a trial foci table list based on the Medical Subject Headings (MeSH) provided by data submitters. Each trial may have multiple therapeutic focuses, depending on the information submitted by data submitters.
 
 get_foci_ctgov(nctids, username, password)
+
 e.g data <- get_foci_ctgov("NCT01271322",username, password)
 
 
@@ -78,6 +79,7 @@ In cases where the data submitters provide no information for a particular clini
 3. `get_foci_euctr`: This function facilitates the retrieval of therapeutic focus information from the EU Clinical Trials Register (EUCTR). It scrapes the "E.1 Medical condition or disease under investigation" field and assigns the corresponding therapeutic focus to a specified EUCTR identifier.
 
 get_foci_euctr("2010-023457-11")
+
 ##advanced/recurrent ovarian and endometrial cancer
 
 
