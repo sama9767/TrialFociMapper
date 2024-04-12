@@ -5,9 +5,9 @@ This package retrieves and assigns therapeutic foci to clinical trials from Clin
 
 ### ClinicalTrials.gov registry function
 
-ClinicalTrials.gov data is structured within the AACT database schema. The AACT database incorporates information from ClinicalTrials.gov and features a "Browse Conditions" table, detailing the conditions studied in trials. When submitting study data to ClinicalTrials.gov, data submitters are advised to employ Medical Subject Headings (MeSH terms), sourced from a MeSH tree. This MeSH tree, hosted by the National Library of Medicine (NLM), has 16 overarching categories, each with subcategories. The two overarching categories "Diseases [C]” and “Psychiatry and Psychology [F]” contain subcategories, which are referred to as therapeutic foci in this package. For example, within the overarching category of "Diseases [C]” there is a subcategory ‘Infections’ [C01] which is  therapeutic foci 
+ClinicalTrials.gov data is structured within the AACT database schema. The AACT database incorporates information from ClinicalTrials.gov and features a "Browse Conditions" table, detailing the conditions studied in trials. When submitting study data to ClinicalTrials.gov, data submitters are advised to employ Medical Subject Headings (MeSH terms), sourced from a MeSH tree. This MeSH tree, hosted by the National Library of Medicine (NLM), has 16 overarching categories, each with subcategories. The two overarching categories "Diseases [C]” and “Psychiatry and Psychology [F]” contain subcategories, which are referred to as therapeutic foci in this package. For example, within the overarching category of "Diseases [C]” there is a subcategory ‘Infections’ [C01] which is a therapeutic focus.
 
-In order to retrieve MeSH terms submitted for a particular trial by the trialist, the provided function accesses the "browse_conditions" table for a given trial and determines therapeutic focus based on the NLM descriptor data available at the NLM descriptor data reference. A single trial can have one or more than one MeSH headings associated with it. For such cases, an additional function (‘assign_therpeutic_focus’) is provided which assigns a single final focus for aggregation across trials based on the disease-centric approach (described below).
+In order to retrieve MeSH terms submitted for a particular trial by the trialist, the provided function accesses the "browse_conditions" table for a given trial and determines therapeutic focus based on the NLM descriptor data available at the NLM descriptor data reference. A single trial can have one or more than one MeSH headings associated with it. For such cases, an additional function (‘assign_therpeutic_focus’) is provided which assigns a single final focus.
 
 The following functions are provided: 
 
@@ -23,7 +23,7 @@ e.g data <- get_foci_ctgov("NCT01271322",username, password)
 |   NCT01271322  |     c("Neoplasms", "Digestive System Diseases")         |
 
 
-2. `assign_therapeutic_focus` - This additional function assigns a single therapeutic focus to trials with multiple therapeutic focuses. This is achieved by using a predefined order/sequence based on a disease-centric approach.
+2. `assign_therapeutic_focus` - This additional function assigns a single therapeutic focus to trials with multiple therapeutic focuses. This is achieved by using a predefined order/sequence based on a disease-centric approach described below.
 
 assign_therapeutic_focus(data = data, nctid_col = nct_id, mesh_heading_cols = 'trial_foci_table_list')
 
@@ -35,7 +35,7 @@ assign_therapeutic_focus(data = data, nctid_col = nct_id, mesh_heading_cols = 't
 
 
 ### What is a disease-centric approach?
-The disease-centric approach prioritizes diseases as the primary factor in determining therapeutic focus. It assigns higher weights to therapeutic foci representing severe or prevalent diseases while giving lesser weight to associated organ systems, pathology, or symptoms. For example, in the ClinicalTrials.gov registered trial "NCT01271322,” studying Adenocarcinoma of the Esophagogastric Junction, package retrieves 'trial_foci_table_list' of  Neoplasm and Digestive System Diseases. In this scenario, the disease-centric approach would prioritize Neoplasms due to its significance, while assigning lower weight to the Digestive System Diseases as it represents the anatomical position rather than the actual disease. While our function focuses solely on this approach, there could be other approaches, such as anatomical-centric, for future exploration.
+The disease-centric approach prioritizes diseases as the primary factor in determining therapeutic focus. It assigns higher weights to therapeutic focus representing severe or prevalent diseases while giving lesser weight to associated organ systems, pathology, or symptoms. For example, in the ClinicalTrials.gov registered trial "NCT01271322,” studying Adenocarcinoma of the Esophagogastric Junction, the function retrieves 'trial_foci_table_list' of  Neoplasm and Digestive System Diseases. In this scenario, the disease-centric approach would prioritize 'Neoplasms' due to its significance, while assigning lower weight to the 'Digestive System Diseases' as it represents the anatomical position rather than the actual disease. While our function focuses solely on this approach, there could be other approaches, such as anatomical-centric, for future exploration.
 
 Following is the table of therapeutic focus with corresponding weights as assigned in the package: 
 
