@@ -11,7 +11,7 @@ In order to retrieve MeSH terms submitted for a particular trial by the trialist
 
 The following functions are provided: 
 
-1. `get_foci_ctgov`: This function utilizes the "browse_conditions" table to generate a trial focus table list based on the Medical Subject Headings (MeSH) provided by data submitters. Each trial may have multiple therapeutic focuses, depending on the information submitted by data submitters.
+1. `get_foci_ctgov`: This function utilizes the "browse_conditions" table to generate a 'trial_foci_table_list' based on the Medical Subject Headings (MeSH) provided by data submitters. Each trial may have multiple therapeutic focuses, depending on the information submitted by data submitters.
 
 get_foci_ctgov(nctids, username, password)
 
