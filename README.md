@@ -1,17 +1,17 @@
 # TrialFociMapper
 
 ## Description
-This package retrieves and assigns therapeutic foci to clinical trials from ClinicalTrials.gov and the EU Clinical Trials Register (EUCTR).
+This package retrieves and assigns therapeutic focus to clinical trials from ClinicalTrials.gov and the EU Clinical Trials Register (EUCTR).
 
 ### ClinicalTrials.gov registry function
 
-ClinicalTrials.gov data is structured within the AACT database schema. The AACT database incorporates information from ClinicalTrials.gov and features a "Browse Conditions" table, detailing the conditions studied in trials. When submitting study data to ClinicalTrials.gov, data submitters are advised to employ Medical Subject Headings (MeSH terms), sourced from a MeSH tree. This MeSH tree, hosted by the National Library of Medicine (NLM), has 16 overarching categories, each with subcategories. The two overarching categories "Diseases [C]” and “Psychiatry and Psychology [F]” contain subcategories, which are referred to as therapeutic foci in this package. For example, within the overarching category of "Diseases [C]” there is a subcategory ‘Infections’ [C01] which is a therapeutic focus.
+ClinicalTrials.gov data is structured within the AACT database schema. The AACT database incorporates information from ClinicalTrials.gov and features a "Browse Conditions" table, detailing the conditions studied in trials. When submitting study data to ClinicalTrials.gov, data submitters are advised to employ Medical Subject Headings (MeSH terms), sourced from a MeSH tree. This MeSH tree, hosted by the National Library of Medicine (NLM), has 16 overarching categories, each with subcategories. The two overarching categories "Diseases [C]” and “Psychiatry and Psychology [F]” contain subcategories, which are referred to as therapeutic focus in this package. For example, within the overarching category of "Diseases [C]” there is a subcategory ‘Infections’ [C01] which is a therapeutic focus.
 
 In order to retrieve MeSH terms submitted for a particular trial by the trialist, the provided function accesses the "browse_conditions" table for a given trial and determines therapeutic focus based on the NLM descriptor data available at the NLM descriptor data reference. A single trial can have one or more than one MeSH headings associated with it. For such cases, an additional function (‘assign_therpeutic_focus’) is provided which assigns a single final focus.
 
 The following functions are provided: 
 
-1. `get_foci_ctgov`: This function utilizes the "browse_conditions" table to generate a trial foci table list based on the Medical Subject Headings (MeSH) provided by data submitters. Each trial may have multiple therapeutic focuses, depending on the information submitted by data submitters.
+1. `get_foci_ctgov`: This function utilizes the "browse_conditions" table to generate a trial focus table list based on the Medical Subject Headings (MeSH) provided by data submitters. Each trial may have multiple therapeutic focuses, depending on the information submitted by data submitters.
 
 get_foci_ctgov(nctids, username, password)
 
