@@ -35,7 +35,7 @@ assign_therapeutic_focus(data = data, nctid_col = nct_id, mesh_heading_cols = 't
 
 
 ### What is a disease-centric approach?
-The disease-centric approach prioritizes diseases as the primary factor in determining therapeutic focus. It assigns higher weights to therapeutic focus representing severe or prevalent diseases while giving lesser weight to associated organ systems, pathology, or symptoms. For example, in the ClinicalTrials.gov registered trial "NCT01271322,” studying Adenocarcinoma of the Esophagogastric Junction, the function retrieves 'trial_foci_table_list' of  Neoplasm and Digestive System Diseases. In this scenario, the disease-centric approach would prioritize 'Neoplasms' due to its significance, while assigning lower weight to the 'Digestive System Diseases' as it represents the anatomical position rather than the actual disease. While our function focuses solely on this approach, there could be other approaches, such as anatomical-centric, for future exploration.
+The disease-centric approach prioritizes diseases as the primary factor in determining therapeutic focus. It assigns higher weights to therapeutic focus representing severe or prevalent diseases while giving lesser weight to associated organ systems, pathology, or symptoms. For example, in the ClinicalTrials.gov registered trial "NCT01271322,” studying Adenocarcinoma of the Esophagogastric Junction, the function retrieves 'trial_foci_table_list' of  Neoplasm and Digestive System Diseases. In this scenario, the disease-centric approach would prioritize 'Neoplasms' due to its significance, while assigning lower weight to the 'Digestive System Diseases' as it represents the anatomical position rather than the actual disease. While our function focuses solely on this approach, there could be other approaches, such as anatomical-centric, for future exploration. Keeping this in mind, we keep this as an additional optional function as users can use the 'get_foci_ctgov' function to have all therapeutic focuses related to the trial and can decide how to aggregate the dataset accordingly.
 
 Following is the table of therapeutic focus with corresponding weights as assigned in the package: 
 
@@ -93,4 +93,6 @@ install_github("sama9767/TrialFociMapper")
 library(TrialFociMapper)
 ````
 
-Thank you for your attention. If you find any bug, please open an issue in the issue tracker. 
+Thank you for your attention. If you find any bug, please open an issue in the tracker. 
+
+TFM team out :v:
