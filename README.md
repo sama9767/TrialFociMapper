@@ -15,6 +15,8 @@ The following functions are provided:
 
 get_foci_ctgov(nctids, username, password)
 
+Note: An account in the AACT database is required for generating a username and password (see link: https://aact.ctti-clinicaltrials.org/users/sign_up) 
+
 e.g data <- get_foci_ctgov("NCT01271322",username, password)
 
 
